@@ -7,8 +7,10 @@ const sessions = require('./middlewares/sessions')
 
 // controllers
 const tripsController = require('./controllers/trips_controller')
+const itinerariesController = require('./controllers/itineraries_controller')
 const usersController = require('./controllers/users_controller')
 const sessionsController = require('./controllers/sessions_controller')
+
 
 const app = express()
 const port = process.env.PORT || 3001;
@@ -24,5 +26,6 @@ app.use(express.json())
 app.use(sessions)
 
 app.use('/api/trips', tripsController)
+app.use('/api/itineraries', itinerariesController)
 app.use('/api/users', usersController)
 app.use('/api/sessions', sessionsController)
