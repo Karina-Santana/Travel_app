@@ -7,6 +7,7 @@ function renderTripList() {
 }
 
 function renderTrips() {
+
   if (state.loggedInUserName) {
     console.log('logged in')
     return state.trips.map(trip => `
@@ -28,6 +29,7 @@ function renderTrips() {
     `).join('')
   }
 }
+
 
 function renderEditTrip() {
   return state.trips.map(trip =>
