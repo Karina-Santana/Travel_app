@@ -16,7 +16,6 @@ function header() {
                 <li onClick="renderSignUp()">Sign Up</li>
                 <li onClick="renderLogin()">Log in</li>
             </ul>
-            
         `
     }
 }

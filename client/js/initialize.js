@@ -8,12 +8,10 @@ fetch('/api/trips')
   .then(trips => {
     state.trips = trips
     header()
-    renderTripList()
 })
 
 fetch('/api/itineraries') 
   .then(res => res.json())
   .then(itineraries => {
-    state.itineraries = itineraries
-    renderItineraryList() 
+    state.itineraries = itineraries 
 })
