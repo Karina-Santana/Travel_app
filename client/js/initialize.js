@@ -7,5 +7,5 @@ fetch('/api/trips')
   .then(trips => {
     state.trips = trips
     header()
-    renderTripList()
+    // renderTripList()
   })

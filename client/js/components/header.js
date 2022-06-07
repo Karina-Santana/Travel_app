@@ -5,10 +5,7 @@ function header() {
                 <li onClick="renderTripList()">Show Trips</li>
                 <li onClick="renderAddTrip()">Create Trip</li>
             </ul>
-            <form action="/sessions" method="POST">
-                <button class="logout-btn">Logout</button>
-                <input type="hidden" name="_method" value="delete">
-            </form>
+            <li onClick="logout(event)">Logout</li>
         `
     } else {
         document.querySelector('.header-nav').innerHTML = `
@@ -16,8 +13,13 @@ function header() {
                 <li onClick="renderSignUp()">Sign Up</li>
                 <li onClick="renderLogin()">Log in</li>
             </ul>
-            
         `
     }
 }
 
+function logout(event) {
+    event.preventDefault()
+    state.loggedInUserName = false
+    header()
+    return renderTripList()
+}
