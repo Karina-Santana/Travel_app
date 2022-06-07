@@ -25,5 +25,8 @@ CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     name TEXT,
     email TEXT,
-    password_digest TEXT
 );
+
+SELECT users.id AS user_id, itineraries.start_location, itineraries.end_location, itineraries.start_date, itineraries.end_date, itineraries.start_time, itineraries.end_time, itineraries.activities, itineraries.notes, itineraries.checklist FROM itineraries INNER JOIN users ON users.id = itineraries.id;
+
+SELECT users.id AS user_id, trips.name FROM trips INNER JOIN users ON users.id = trips.id;

@@ -1,5 +1,6 @@
-const state = {
-  trips: []
+const state = { 
+  trips: [], 
+  itineraries: []
 }
 
 fetch('/api/trips')
@@ -8,4 +9,11 @@ fetch('/api/trips')
     state.trips = trips
     header()
     renderTripList()
-  })
+})
+
+fetch('/api/itineraries') 
+  .then(res => res.json())
+  .then(itineraries => {
+    state.itineraries = itineraries
+    renderItineraryList() 
+})
