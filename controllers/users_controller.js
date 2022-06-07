@@ -7,7 +7,6 @@ const router = express.Router()
 router.post('/', (req, res) => {
   const { name, email, password } = req.body
 
-  // using bcrypt to create password digest
   const passwordDigest = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
 
   User

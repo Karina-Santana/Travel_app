@@ -6,7 +6,8 @@ const sessions = require('./middlewares/sessions')
 
 
 // controllers
-const usersController = ('./controllers/users_controller')
+const tripsController = require('./controllers/trips_controller')
+const usersController = require('./controllers/users_controller')
 const sessionsController = require('./controllers/sessions_controller')
 
 const app = express()
@@ -22,5 +23,6 @@ app.use(express.json())
 
 app.use(sessions)
 
+app.use('/api/trips', tripsController)
 app.use('/api/users', usersController)
-// app.use('/api/sessions', sessionsController)
+app.use('/api/sessions', sessionsController)

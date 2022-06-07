@@ -21,7 +21,7 @@ const User = {
     return db
       .query(sql, [name, email, passwordDigest])
       .then(dbRes => dbRes.rows[0].name)
-  }
+  }, 
 }
 
 module.exports = User
