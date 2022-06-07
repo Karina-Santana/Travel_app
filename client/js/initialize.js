@@ -2,7 +2,7 @@ const state = {
   trips: []
 }
 
-fetch('api/trips') 
+fetch('/api/trips') 
   .then(res => res.json())
   .then(trips => {
     state.trips = trips 

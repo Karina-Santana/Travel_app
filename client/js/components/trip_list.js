@@ -10,7 +10,7 @@ function renderTrips() {
     return state.trips.map(trip =>`
   <section class='trip' data-id='${trip.id}'>
     <header>
-      <h2>${trip.name}</h2>
+      <h2${trip.name}</h2>
       <span onClick="deleteTrip(event)">delete</span>
     </header>
     <p>${trip.start_date}</p>

@@ -11,7 +11,7 @@ const usersController = require('./controllers/users_controller')
 const sessionsController = require('./controllers/sessions_controller')
 
 const app = express()
-const port = 8000
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => console.log(`listening on port ${port}`))
 
