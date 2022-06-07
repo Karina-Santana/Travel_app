@@ -11,6 +11,7 @@ function renderTrips() {
   <section class='trip' data-id='${trip.id}'>
     <header>
       <h2${trip.name}</h2>
+      ${console.log(trip.name)}
       <span onClick="deleteTrip(event)">delete</span>
       <span onClick="renderEditTrip()">edit</span>
     </header>
