@@ -3,11 +3,12 @@ const state = {
   itineraries: []
 }
 
-fetch('/api/trips') 
+fetch('/api/trips')
   .then(res => res.json())
   .then(trips => {
-    state.trips = trips 
-    renderTripList() 
+    state.trips = trips
+    header()
+    renderTripList()
 })
 
 fetch('/api/itineraries') 
