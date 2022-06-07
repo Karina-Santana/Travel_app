@@ -30,16 +30,17 @@ function signUp(event) {
   const data = Object.fromEntries(new FormData(form))
   fetch('/api/users', {
     method: 'POST',
-    headers: { "Content-Type": "application/json"}, 
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
-  }) 
-  .then(res => res.json())
-  .then(res => {
-    if (res.error) {
-      console.log(res.error)
-    } else {
-      state.loggedInUserName = res
-      renderTripList()
-    }
   })
+    .then(res => res.json())
+    .then(res => {
+      if (res.error) {
+        console.log(res.error)
+      } else {
+        state.loggedInUserName = res
+        // renderTripList()
+        header()
+      }
+    })
 }
