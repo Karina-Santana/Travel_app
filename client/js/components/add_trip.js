@@ -5,17 +5,17 @@ function renderAddTrip() {
       <h2>Add trip</h2>
       <fieldset>
         <label for="">Name: </label>
-        <input type="text" name="name">
+        <input type="name" name="name">
       </fieldset>
 
       <fieldset>
         <label for="">Start date: </label>
-        <input type="text" name="start_date">
+        <input type="date" name="start_date">
       </fieldset>
 
       <fieldset>
         <label for="">End Date: </label>
-        <input type="text" name="end_date">
+        <input type="date" name="end_date">
       </fieldset>
       <button>Add Trip</button>
     </form>
