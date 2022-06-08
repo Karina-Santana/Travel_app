@@ -9,9 +9,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const {start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist} = req.body
+  const {start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist, trip_id} = req.body
   Itinerary
-  .create(start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist)
+  .create(start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist, trip_id)
   .then(itinerary => res.json(itinerary))
 })
 
