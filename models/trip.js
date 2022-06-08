@@ -19,6 +19,17 @@ const Trip = {
     .then(dbRes => dbRes.rows[0])
   }, 
 
+  edit: (id) => {
+    const sql = `
+    SELECT * FROM trips WHERE id = $1
+    RETURNING *
+    `
+    
+    return db.query(sql, [id])
+    .then(dbRes => dbRes.rows[0])
+  }, 
+
+
   delete: (tripId) => {
     const sql = `
     DELETE FROM trips WHERE id = $1
