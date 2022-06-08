@@ -1,20 +1,21 @@
 const db = require("../db/db")
 
 const Itinerary = {
-  findAll: () => {
-    const sql = 'SELECT * FROM itineraries'
+  findForTrip: (tripId) => {
+    const sql = 'SELECT * FROM itineraries WHERE trip_id = $1'
+    //getting all itineraries from that one trip
     return db
-    .query(sql)
-    .then(dbRes => dbRes.rows)
+      .query(sql, [tripId])
+      .then(dbRes => dbRes.rows)
   },
 
-  create: (start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist) => {
+  create: (start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist, tripId) => {
     const sql = `
-    INSERT INTO itineraries(start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    INSERT INTO itineraries(start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist, trip_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
     RETURNING *
     `
-    return db.query(sql, [start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist])
-    .then(dbRes => dbRes.rows[0])
+    return db.query(sql, [start_location, end_location, start_date, end_date, start_time, end_time, activities, notes, checklist, tripId])
+      .then(dbRes => dbRes.rows[0])
   }
 }
 

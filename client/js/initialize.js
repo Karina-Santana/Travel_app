@@ -1,6 +1,7 @@
-const state = { 
-  trips: [], 
-  itineraries: []
+const state = {
+  trips: [],
+  itinerariesForTrip: [],
+  tripId: null
 }
 
 fetch('/api/trips')
@@ -10,10 +11,3 @@ fetch('/api/trips')
     header()
 
   })
-
-fetch('/api/itineraries') 
-  .then(res => res.json())
-  .then(itineraries => {
-    state.itineraries = itineraries 
-})
-

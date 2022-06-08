@@ -6,14 +6,16 @@ function renderTripList() {
   `
 }
 
+//renderTripList make sure render all the trip list
+//renderTrips pass all data from a trip
 function renderTrips() {
-
   if (state.loggedInUserName) {
     console.log('logged in')
+    console.log(state.loggedInUserName.userId)
     return state.trips.map(trip => `
     <section class='trip' data-id='${trip.id}'>
       <header>
-        <h2>${trip.name}</h2>
+        <h2 onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
         <span onClick="deleteTrip(event)">delete</span>
         <span onClick="renderEditTrip()">edit</span>
       </header>

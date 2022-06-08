@@ -3,6 +3,7 @@ CREATE DATABASE travel_app;
 
 CREATE TABLE trips(
     id SERIAL PRIMARY KEY,
+    user_id INTEGER,
     name TEXT,
     start_date TEXT,
     end_date TEXT
@@ -10,6 +11,7 @@ CREATE TABLE trips(
 
 CREATE TABLE itineraries(
     id SERIAL PRIMARY KEY,
+    trip_id INTEGER,
     start_location TEXT,
     end_location TEXT,
     start_date TEXT,
@@ -25,6 +27,7 @@ CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     name TEXT,
     email TEXT,
+    password_digest
 );
 
 SELECT users.id AS user_id, itineraries.start_location, itineraries.end_location, itineraries.start_date, itineraries.end_date, itineraries.start_time, itineraries.end_time, itineraries.activities, itineraries.notes, itineraries.checklist FROM itineraries INNER JOIN users ON users.id = itineraries.id;
