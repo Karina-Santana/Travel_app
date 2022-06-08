@@ -19,13 +19,13 @@ const Trip = {
     .then(dbRes => dbRes.rows[0])
   }, 
 
-  edit: (id) => {
+  edit: (name, start_date, end_date, tripId) => {
     const sql = `
-    SELECT * FROM trips WHERE id = $1
-    RETURNING *
+    UPDATE trips SET name = $1, start_date = $2, end_date = $3
+    WHERE id = $4
     `
     
-    return db.query(sql, [id])
+    return db.query(sql, [name, start_date, end_date, tripId])
     .then(dbRes => dbRes.rows[0])
   }, 
 
