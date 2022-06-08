@@ -28,6 +28,7 @@ CREATE TABLE users(
     name TEXT,
     email TEXT,
     password_digest TEXT
+
   );
 
 SELECT trips.id AS trips_id, trips.name, itineraries.start_location FROM itineraries INNER JOIN trips ON trips.id = itineraries.trip_id;

@@ -15,10 +15,11 @@ router.post('/', (req, res) => {
   .then(trip => res.json(trip))
 })
 
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
   const {name, start_date, end_date} = req.body
+  const tripId = req.params.id
   Trip
-  .create(name, start_date, end_date)
+  .edit(name, start_date, end_date, tripId)
   .then(trip => res.json(trip))
 })
 
