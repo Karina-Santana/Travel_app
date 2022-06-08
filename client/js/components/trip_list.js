@@ -6,13 +6,16 @@ function renderTripList() {
   `
 }
 
+//renderTripList make sure render all the trip list
+//renderTrips pass all data from a trip
 function renderTrips() {
   if (state.loggedInUserName) {
     console.log('logged in')
+    console.log(state.loggedInUserName.userId)
     return state.trips.map(trip => `
     <section class='trip' data-id='${trip.id}'>
       <header>
-      <h2 onClick="renderItineraryList()">${trip.name}</h2>
+        <h2 onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
         <span onClick="deleteTrip(event)">delete</span>
         <span onClick="renderEditTrip(${trip.id})">edit</span>
       </header>
@@ -54,10 +57,10 @@ function renderEditTrip(tripId) {
     </form>
   </section>
   `).join('')
-  }
+}
 
 function editTrip(event, tripId) {
-  event.preventDefault() 
+  event.preventDefault()
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
   fetch(`/api/trips/${tripId}`, {
@@ -66,18 +69,18 @@ function editTrip(event, tripId) {
     body: JSON.stringify(data)
   })
 
-  
-    renderTripList(state.tripId)  
-   
+
+  renderTripList(state.tripId)
+
 }
 
 function deleteTrip(event) {
   const deleteBtn = event.target
   const tripDOM = deleteBtn.closest('.trip')
   const tripId = tripDOM.dataset.id
-  
+
   fetch(`/api/trips/${tripId}`, {
-    method: 'DELETE' 
+    method: 'DELETE'
   })
     .then(() => {
       state.trips = state.trips.filter(t => t.id != tripId)

@@ -59,15 +59,14 @@ function createItinerary(event) {
   event.preventDefault()
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
-  console.log(data)
-  fetch('/api/itineraries', {
+  fetch(`/api/itineraries/${state.tripId}`, {
     method: 'POST',
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
-  .then(res => res.json())
-  .then(itinerary => {
-    state.itineraries.push(itinerary)
-    renderItineraryList()
-  })
+    .then(res => res.json())
+    .then(itinerary => {
+      state.itinerariesForTrip.push(itinerary)
+      renderItineraryList(state.tripId)
+    })
 }
