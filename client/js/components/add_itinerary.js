@@ -46,6 +46,9 @@ function renderAddItinerary() {
         <label for="">Checklist: </label>
         <input type="text" name="checklist">
       </fieldset>
+
+      <input type="hidden" name="trip_id" value="1">
+
       <button>Add Itinerary</button>
     </form>
   </section>
@@ -56,6 +59,7 @@ function createItinerary(event) {
   event.preventDefault()
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
+  console.log(data)
   fetch('/api/itineraries', {
     method: 'POST',
     headers: {"Content-Type": "application/json"},
