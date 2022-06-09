@@ -70,10 +70,13 @@ function editTrip(event, tripId) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
-    .then(() => {
-      state.trips = state.trips.filter(t => t.id == tripId)  
-      renderTripList(state.tripId)  
-    }) 
+
+  .then(() => {
+   const editedTrip = state.trips.filter(t => t.id == tripId).slice(0)
+    state.trips.push(editedTrip)
+    console.log(editedTrip)
+    renderTripList()  
+  }) 
 }
 
 function deleteTrip(event) {

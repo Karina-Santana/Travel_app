@@ -21,15 +21,18 @@ function login(event) {
   event.preventDefault()
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
-  fetch('/api/sessions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
-    .then(res => res.json())
-    .then(userName => state.loggedInUserName = userName)
-    .then(() => {
-      header()
-      renderTripList()
+    fetch('/api/sessions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+      
     })
-}
+      .then(res => res.json())
+      .then(userName => state.loggedInUserName = userName)
+      .then(() => {
+        header()
+        renderTripList()
+      })
+} 
+ 
+
