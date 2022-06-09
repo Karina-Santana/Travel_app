@@ -58,10 +58,10 @@ function renderTrips() {
 // }
 
 
-function renderEditTrip() {
+function renderEditTrip(tripId) {
   return state.trips.map(trip =>
     document.querySelector('#page').innerHTML = `
-    <section class='edit-trip' data-id='${trip.id}'>
+    <section class='edit-trip' data-id='${tripId}'>
       <form onSubmit="editTrip(event)">
         <h2>Edit Trip</h2>
         <fieldset>
@@ -99,12 +99,9 @@ function editTrip(event, tripId) {
     body: JSON.stringify(data)
   })
 
-    .then(() => {
-      const editedTrip = state.trips.filter(t => t.id == tripId).slice(0)
-      state.trips.push(editedTrip)
-      console.log(editedTrip)
-      renderTripList()
-    })
+  .then(() => {
+    renderTripList()  
+  }) 
 }
 
 function deleteTrip(event) {
