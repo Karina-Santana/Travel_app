@@ -1,0 +1,53 @@
+.itinerary {
+    border: 1px solid black;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.trip-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.trip {
+    border: 1px solid black;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.trip img {
+    width: fit-content;
+}
+
+.edit-btn,
+.delete-btn,
+.logout-btn {
+    background-color: rgb(239, 239, 239);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.edit-delete {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    /* opacity: 0.5; */
+}
+
+.logout-btn {
+    list-style-type: none;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+button {
+    cursor: pointer;
+}

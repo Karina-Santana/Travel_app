@@ -5,29 +5,29 @@ const Trip = require('../models/trip')
 
 router.get('/', (req, res) => {
   Trip.findAll()
-  .then(trips => res.json(trips)) 
+    .then(trips => res.json(trips))
 })
 
 router.post('/', (req, res) => {
-  const {name, start_date, end_date} = req.body
+  const { name, start_date, end_date, image_url } = req.body
   Trip
-  .create(name, start_date, end_date)
-  .then(trip => res.json(trip))
+    .create(name, start_date, end_date, image_url)
+    .then(trip => res.json(trip))
 })
 
 router.put('/', (req, res) => {
-  const {name, start_date, end_date} = req.body
+  const { name, start_date, end_date, image_url } = req.body
   Trip
-  .create(name, start_date, end_date)
-  .then(trip => res.json(trip))
+    .create(name, start_date, end_date, image_url)
+    .then(trip => res.json(trip))
 })
 
 router.delete('/:id', (req, res) => {
   const tripId = req.params.id
 
   Trip
-  .delete(tripId)
-  .then(() => res.json({message: 'deleted successfully'}))
+    .delete(tripId)
+    .then(() => res.json({ message: 'deleted successfully' }))
 })
 
 module.exports = router
