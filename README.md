@@ -1,17 +1,17 @@
 # Project 3
-The third project of our software engineering course was to create a SPA in a small team. 
+The third project of our software engineering course was to create a SPA in a small team. Myself along with <a href= "https://github.com/Karina-Santana">Karina Santina</a> and James Mein worked together to create this app. <a href= "https://github.com/JimmyMein">Click on their names to visit their githubs!</a>
 
 Have a Nice Trip is the solution to this project. Have a Nice Trip is a platform where users can add a trip and also add their indivual plans (itineraries) for that trip. They will be able to store the dates they are going on these trips and more information on their itinerary such as activities and important notes.
 
-Organising your latest trip begins here! https://gentle-castle-11768.herokuapp.com/
+<a href= "https://gentle-castle-11768.herokuapp.com/">Organising your latest trip begins here!</a>
 
 ## Wireframes
 Our app has 3 main 'pages' which are Home, Trip List and Itinerary List. The Trip List page will render all trips the user has created. When a user clicks into the name of one of their trips, the Itineraries List will load which stores all of the individual itineries that user has created for that trip.
-https://wireframe.cc/pro/pp/1bb9130c1555052
+<a href= "https://wireframe.cc/pro/pp/1bb9130c1555052">Check out our wireframes here</a>
 
 ## Databases
 This project used one database called travel_app that contained 3 main tables. The User table stores the users that sign up, the trips table stores the trips that are created and the itineraries table by a user stores the itineraries that are created by a user.
-https://airtable.com/shrBcGvRD33Pjxqcs
+<a href= "https://cloud.xara.com/?doc=yT5A6L0nkp">Check out a database example here</a>
 
 ## Tech Stack
 HTML
@@ -28,10 +28,10 @@ We then set up a database for the itineraries and allowed a travel_id to be stor
 We all decided to leave CSS until the last day given that all the above features would affect the styling of the 'pages' when added. The trips are displayed in a grid while the itineraries are displayed in a xx. All front-end features that have an onClick function such as the Show Trips and Logout have a hover over icon so that the user knows something will happen when they click on these features.
 
 ## Check out our user stories here
+<a href= "https://trello.com/b/6Pkvy08Z/project-management">User Stories via Trello</a>
 
 
-
-## Major hurdles
+## Major hurdles and unsolved issues
 Our team wanted to interact with a weather API so that the weather for the ending city is pulled through when a user creates an itinerary. Our teacher informed us that this would be too difficult to achieve in the timeframe that we were given for this project. 
 
 Using github for the first time in a group was a major challenge. Learning how to resolve conflicts in our code was very time consuming. 
