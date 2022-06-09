@@ -1,23 +1,22 @@
 const db = require("../db/db")
 
 const Trip = {
-  findAll: () => {
-    const sql = 'SELECT * FROM trips'
+  findAll: (id) => { 
+    const sql = 'SELECT * FROM trips WHERE user_id = $1'
 
-    return db
-      .query(sql)
-      .then(dbRES => dbRES.rows)
-  },
+    return db 
+    .query(sql, [id])
+    .then(dbRES => dbRES.rows)
+  }, 
 
-  create: (name, start_date, end_date, image_url) => {
+  create: (user_id, name, start_date, end_date, image_url) => {
     const sql = `
-    INSERT INTO trips(name, start_date, end_date, image_url) VALUES ($1, $2, $3, $4)
+    INSERT INTO trips(user_id, name, start_date, end_date, image_url) VALUES ($1, $2, $3, $4, $5)
     RETURNING *
     `
-
-    return db.query(sql, [name, start_date, end_date, image_url])
-      .then(dbRes => dbRes.rows[0])
-  },
+    return db.query(sql, [user_id, name, start_date, end_date, image_url])
+    .then(dbRes => dbRes.rows[0])
+  }, 
 
   edit: (name, start_date, end_date, tripId) => {
     const sql = `

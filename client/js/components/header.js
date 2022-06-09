@@ -2,7 +2,7 @@ function header() {
     if (state.loggedInUserName) {
         document.querySelector('.header-nav').innerHTML = `
             <ul class="show-create-logout">
-                <li class="show-list" onClick="renderTripList()">Show Trips</li>
+                <li class="show-list" onClick="renderTripList(${state.loggedInUserName.userId})">Show Trips</li>
                 <li class="create-trip" onClick="renderAddTrip()">Create Trip</li>
                 <li class="logout-btn" onClick="logout(event)">Logout</li>
             </ul>

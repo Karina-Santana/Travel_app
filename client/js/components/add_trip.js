@@ -32,7 +32,9 @@ function createTrip(event) {
   event.preventDefault()
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
-  fetch('/api/trips', {
+  const userId = state.sessionId
+  console.log(userId)
+  fetch(`/api/trips/${userId}`, {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
