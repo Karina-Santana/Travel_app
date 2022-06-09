@@ -20,21 +20,21 @@ function renderTrips() {
   .then(res => res.json())
   .then(trips => {
     state.trips = trips
-})
-.then(() => {
-  return state.trips.map(trip => `
-  <section class='trip' style="background-image:url(${trip.image_url});" data-id='${trip.id}'>
-    <header>
-      <h2 onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
-      <p>${trip.start_date} - ${trip.end_date}</p>
-      <div class="edit-delete">
-        <p class="edit-btn" onClick="renderEditTrip(${trip.id})">Edit</p>
-        <p class="delete-btn" onClick="deleteTrip(event)">Delete</p>
-      </div>
-    </header>
-    </section>
-  `).join('')
   })
+  .then(() => {
+    return state.trips.map(trip => `
+    <section class='trip' style="background-image:url(${trip.image_url});" data-id='${trip.id}'>
+      <header>
+        <h2 class="trip-name"onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
+        <p class="dates"> ${trip.start_date} - ${trip.end_date}</p>
+        <div class="edit-delete">
+          <p class="edit-btn" onClick="renderEditTrip(${trip.id})">Edit</p>
+          <p class="delete-btn" onClick="deleteTrip(event)">Delete</p>
+        </div>
+      </header>
+    </section>
+    `).join('')
+    })
 }
 
 // function renderTrips() {
@@ -60,8 +60,7 @@ function renderTrips() {
 
 
 function renderEditTrip(tripId) {
-  console.log(tripId)
-  return state.trips.map(trip =>
+  return state.trips.filter(trip => trip.id == tripId).map(trip => {
     document.querySelector('#page').innerHTML = `
     <section class='edit-trip' data-id='${tripId}'>
       <form onSubmit="editTrip(event, ${tripId})">
@@ -88,12 +87,12 @@ function renderEditTrip(tripId) {
         <button>Edit Trip</button>
       </form>
     </section>
-    `).join('')
+    `}
+    ).join('')
 }
 
 function editTrip(event, tripId) {
   event.preventDefault()
-  console.log(tripId)
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
   fetch(`/api/trips/${tripId}`, {
@@ -101,8 +100,14 @@ function editTrip(event, tripId) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
-
-  .then(() => {
+   .then(editedTrip => {
+      state.trips
+      .forEach(trip => {
+        console.log(editedTrip)
+        if (trip.id == editedTrip.id) {
+            
+        }
+      })
     renderTripList()  
   }) 
 }
