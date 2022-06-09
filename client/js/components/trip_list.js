@@ -26,11 +26,12 @@ function renderTrips() {
   <section class='trip' style="background-image:url(${trip.image_url});" data-id='${trip.id}'>
     <header>
       <h2 onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
-      <span onClick="deleteTrip(event)">delete</span>
-      <span onClick="renderEditTrip()">edit</span>
+      <p>${trip.start_date} - ${trip.end_date}</p>
+      <div class="edit-delete">
+        <p class="edit-btn" onClick="renderEditTrip(${trip.id})">Edit</p>
+        <p class="delete-btn" onClick="deleteTrip(event)">Delete</p>
+      </div>
     </header>
-    <p>${trip.start_date}</p>
-    <p>${trip.end_date}</p>
     </section>
   `).join('')
   })
@@ -59,10 +60,11 @@ function renderTrips() {
 
 
 function renderEditTrip(tripId) {
+  console.log(tripId)
   return state.trips.map(trip =>
     document.querySelector('#page').innerHTML = `
     <section class='edit-trip' data-id='${tripId}'>
-      <form onSubmit="editTrip(event)">
+      <form onSubmit="editTrip(event, ${tripId})">
         <h2>Edit Trip</h2>
         <fieldset>
           <label for="">Name: </label>
@@ -91,6 +93,7 @@ function renderEditTrip(tripId) {
 
 function editTrip(event, tripId) {
   event.preventDefault()
+  console.log(tripId)
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
   fetch(`/api/trips/${tripId}`, {
