@@ -71,12 +71,12 @@ function editTrip(event, tripId) {
     body: JSON.stringify(data)
   })
 
-  .then(() => {
-   const editedTrip = state.trips.filter(t => t.id == tripId).slice(0)
-    state.trips.push(editedTrip)
-    console.log(editedTrip)
-    renderTripList()  
-  }) 
+    .then(() => {
+      const editedTrip = state.trips.filter(t => t.id == tripId).slice(0)
+      state.trips.push(editedTrip)
+      console.log(editedTrip)
+      renderTripList()
+    })
 }
 
 function deleteTrip(event) {
