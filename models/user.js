@@ -21,7 +21,15 @@ const User = {
     return db
       .query(sql, [name, email, passwordDigest])
       .then(dbRes => dbRes.rows[0].name)
-  }, 
+  },
+
+  // tripsByUserId: () => {
+  //   const sql = `
+  //     SELECT users.id AS user_ids, trips.id, trips.user_id, trips.name, trips.start_date, trips.end_date FROM trips INNER JOIN users ON users.id = trips.user_id
+  //     VALUES ($1, $2, $3)
+  //     RETURNING *
+  //   `
+  // }
 }
 
 module.exports = User

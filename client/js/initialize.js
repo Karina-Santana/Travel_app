@@ -1,19 +1,14 @@
-const state = { 
-  trips: [], 
-  itineraries: []
+//creating state object with empty trips, itineraries and id
+const state = {
+  trips: [],
+  itinerariesForTrip: [],
+  tripId: null
 }
 
+//talking to API(db) to get trips data
 fetch('/api/trips')
   .then(res => res.json())
   .then(trips => {
     state.trips = trips
     header()
-
   })
-
-fetch('/api/itineraries') 
-  .then(res => res.json())
-  .then(itineraries => {
-    state.itineraries = itineraries 
-})
-

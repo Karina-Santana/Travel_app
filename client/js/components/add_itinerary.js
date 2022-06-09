@@ -34,17 +34,17 @@ function renderAddItinerary() {
 
       <fieldset>
         <label for="">Activities: </label>
-        <input type="text" name="activities">
+        <input type="text" name="activities" placeholder="Write here places to visit and activities you want to do">
       </fieldset>
 
       <fieldset>
         <label for="">Notes: </label>
-        <input type="text" name="notes">
+        <input type="text" name="notes" placeholder="Write or paste anything here: how to get around, tips, etc">
       </fieldset>
 
       <fieldset>
         <label for="">Checklist: </label>
-        <input type="text" name="checklist">
+        <input type="text" name="checklist" placeholder="Write here what you can not forget">
       </fieldset>
 
       <input type="hidden" name="trip_id" value="1">
@@ -59,15 +59,14 @@ function createItinerary(event) {
   event.preventDefault()
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
-  console.log(data)
-  fetch('/api/itineraries', {
+  fetch(`/api/itineraries/${state.tripId}`, {
     method: 'POST',
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
-  .then(res => res.json())
-  .then(itinerary => {
-    state.itineraries.push(itinerary)
-    renderItineraryList()
-  })
+    .then(res => res.json())
+    .then(itinerary => {
+      state.itinerariesForTrip.push(itinerary)
+      renderItineraryList(state.tripId)
+    })
 }

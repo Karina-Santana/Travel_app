@@ -17,6 +17,11 @@ function renderAddTrip() {
         <label for="">End Date: </label>
         <input type="date" name="end_date">
       </fieldset>
+
+      <fieldset>
+        <label for="">Image URL: </label>
+        <input type="text" name="image_url">
+      </fieldset>
       <button>Add Trip</button>
     </form>
   </section>
@@ -24,17 +29,17 @@ function renderAddTrip() {
 }
 
 function createTrip(event) {
-  event.preventDefault() 
+  event.preventDefault()
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
   fetch('/api/trips', {
     method: 'POST',
-    headers: { "Content-Type": "application/json"}, 
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
-  .then(res => res.json())
-  .then(trip => {
-    state.trips.push(trip)
-    renderTripList()
-  })
+    .then(res => res.json())
+    .then(trip => {
+      state.trips.push(trip)
+      renderTripList()
+    })
 }
