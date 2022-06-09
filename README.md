@@ -1,5 +1,5 @@
 # Project 3
-The third project of our software engineering course was to create a SPA in a small team. Myself along with <a href= "https://github.com/Karina-Santana">Karina Santina</a> and James Mein worked together to create this app. <a href= "https://github.com/JimmyMein">Click on their names to visit their githubs!</a>
+The third project of our software engineering course was to create a SPA in a small team. Myself along with <a href= "https://github.com/Karina-Santana">Karina Santina</a> and <a href= "https://github.com/JimmyMein">James Mein</a> worked together to create this app. Click on their names to visit their githubs!
 
 Have a Nice Trip is the solution to this project. Have a Nice Trip is a platform where users can add a trip and also add their indivual plans (itineraries) for that trip. They will be able to store the dates they are going on these trips and more information on their itinerary such as activities and important notes.
 
