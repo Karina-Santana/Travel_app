@@ -4,10 +4,14 @@
 
 body {
     margin: 0 2em;
-    /* background-color: rgb(241, 191, 10); */
-    text-align: center;
     background-repeat: no-repeat;
     background-size: 100%;
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    border-radius: 40%;
 }
 
 form {

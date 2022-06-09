@@ -1,11 +1,12 @@
 function header() {
     if (state.loggedInUserName) {
         document.querySelector('.header-nav').innerHTML = `
-            <ul>
-                <li onClick="renderTripList()">Show Trips</li>
-                <li onClick="renderAddTrip()">Create Trip</li>
+            <ul class="show-create-logout">
+                <li class="show-list" onClick="renderTripList()">Show Trips</li>
+                <li class="create-trip" onClick="renderAddTrip()">Create Trip</li>
+                <li class="logout-btn" onClick="logout(event)">Logout</li>
             </ul>
-            <li class="logout-btn" onClick="logout(event)">Logout</li>
+            
         `
     } else {
         document.querySelector('.header-nav').innerHTML = `
