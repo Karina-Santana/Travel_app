@@ -1,33 +1,61 @@
-function renderTripList() {
-  document.querySelector('#page').innerHTML = `
-    <section class="trip-list">
-      ${renderTrips()}
-    </section>
-  `
+function renderTripList(userId) {
+  userId = state.loggedInUserName.userId
+  renderTrips()
+  .then((trips) => {
+      if (state.loggedInUserName) {
+      console.log(state)
+      document.querySelector('#page').innerHTML = `
+      <section class="trip-list">
+        ${trips}
+      </section>
+    `
+      } else {
+        document.querySelector('#page').innerHTML = ''
+      }
+  })
 }
 
-//renderTripList make sure render all the trip list
-//renderTrips pass all data from a trip
 function renderTrips() {
-  if (state.loggedInUserName) {
-    return state.trips.map(trip => `
-    <section class='trip' style="background-image:url(${trip.image_url});" data-id='${trip.id}'>
-      <header>
-        <h2 onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
-        <p>${trip.start_date} - ${trip.end_date}</p>
-        <div class="edit-delete">
-          <p class="edit-btn" onClick="renderEditTrip()">Edit</p>
-          <p class="delete-btn" onClick="deleteTrip(event)">Delete</p>
-        </div>
-      </header>
+  return fetch(`api/trips/${state.userId}`)
+  .then(res => res.json())
+  .then(trips => {
+    state.trips = trips
+})
+.then(() => {
+  return state.trips.map(trip => `
+  <section class='trip' style="background-image:url(${trip.image_url});" data-id='${trip.id}'>
+    <header>
+      <h2 onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
+      <span onClick="deleteTrip(event)">delete</span>
+      <span onClick="renderEditTrip()">edit</span>
+    </header>
+    <p>${trip.start_date}</p>
+    <p>${trip.end_date}</p>
     </section>
-    `).join('')
-  } else {
-    return state.trips.map(trip => `
-    <section class='nothing' data-id='${trip.id}'></section>
-    `).join('')
-  }
+  `).join('')
+  })
 }
+
+// function renderTrips() {
+//   if (state.loggedInUserName) {
+//     return state.trips.map(trip => `
+//     <section class='trip' style="background-image:url(${trip.image_url});" data-id='${trip.id}'>
+//       <header>
+//         <h2 onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
+//         <p>${trip.start_date} - ${trip.end_date}</p>
+//         <div class="edit-delete">
+//           <p class="edit-btn" onClick="renderEditTrip()">Edit</p>
+//           <p class="delete-btn" onClick="deleteTrip(event)">Delete</p>
+//         </div>
+//       </header>
+//     </section>
+//     `).join('')
+//   } else {
+//     return state.trips.map(trip => `
+//     <section class='nothing' data-id='${trip.id}'></section>
+//     `).join('')
+//   }
+// }
 
 
 function renderEditTrip() {
@@ -88,6 +116,12 @@ function deleteTrip(event) {
   })
     .then(() => {
       state.trips = state.trips.filter(t => t.id != tripId)
-      renderTripList()
+      renderTrips()
+      .then((trips) => {
+        document.querySelector('#page').innerHTML = `
+        <section class="trip-list">${trips}
+        </section>
+        `
+      })
     })
 }

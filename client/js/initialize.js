@@ -6,7 +6,7 @@ const state = {
 }
 
 //talking to API(db) to get trips data
-fetch('/api/trips')
+fetch('/api/trips/:userId')
   .then(res => res.json())
   .then(trips => {
     state.trips = trips

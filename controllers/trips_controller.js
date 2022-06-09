@@ -3,24 +3,18 @@ const router = express.Router()
 
 const Trip = require('../models/trip')
 
-router.get('/', (req, res) => {
-  Trip.findAll()
-    .then(trips => res.json(trips))
+router.get('/:userId', (req, res) => {
+  const userId = req.session.userId
+  Trip.findAll(userId)
+  .then(trips => res.json(trips)) 
 })
 
-router.post('/', (req, res) => {
-  const { name, start_date, end_date, image_url } = req.body
+router.post('/:userId', (req, res) => {
+  const userId = req.session.userId
+  const {name, start_date, end_date, image_url} = req.body
   Trip
-    .create(name, start_date, end_date, image_url)
-    .then(trip => res.json(trip))
-})
-
-router.put('/:id', (req, res) => {
-  const { name, start_date, end_date, image_url } = req.body
-  const tripId = req.params.id
-  Trip
-    .edit(name, start_date, end_date, tripId, image_url)
-    .then(trip => res.json(trip))
+  .create(userId, name, start_date, end_date, image_url)
+  .then(trip => res.json(trip))
 })
 
 router.delete('/:id', (req, res) => {
