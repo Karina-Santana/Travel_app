@@ -34,17 +34,17 @@ function renderAddItinerary() {
 
       <fieldset>
         <label for="">Activities: </label>
-        <input type="text" name="activities">
+        <input type="text" name="activities" placeholder="Write here places to visit and activities you want to do">
       </fieldset>
 
       <fieldset>
         <label for="">Notes: </label>
-        <input type="text" name="notes">
+        <input type="text" name="notes" placeholder="Write or paste anything here: how to get around, tips, etc">
       </fieldset>
 
       <fieldset>
         <label for="">Checklist: </label>
-        <input type="text" name="checklist">
+        <input type="text" name="checklist" placeholder="Write here what you can not forget">
       </fieldset>
 
       <input type="hidden" name="trip_id" value="1">

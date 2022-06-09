@@ -6,7 +6,8 @@ CREATE TABLE trips(
     user_id INTEGER,
     name TEXT,
     start_date TEXT,
-    end_date TEXT
+    end_date TEXT,
+    image_url TEXT
 );
 
 CREATE TABLE itineraries(

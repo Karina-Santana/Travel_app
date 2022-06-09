@@ -28,16 +28,15 @@ function renderItinerary() {
       <section class='itinerary' data-id='${itinerary.id}'>
         <header>
           <h2>${itinerary.start_location}</h2>
+          <p>${itinerary.start_date} - ${itinerary.start_time}</p>
+          <h2>${itinerary.end_location}</h2>
+          <p>${itinerary.end_date} - ${itinerary.end_time}</p>
         </header>
-        <span>${itinerary.start_date}</span>
-        <span>${itinerary.end_date}</span>
-        <span>${itinerary.start_time}</span>
-        <span>${itinerary.end_date}</span>
-        <p>${itinerary.end_location}</p>
+        
         <article>
-          <p>${itinerary.activities}</p>
-          <p>${itinerary.notes}</p>
-          <p>${itinerary.checklist}</p>
+          <p><strong>Activities:</strong> ${itinerary.activities}</p>
+          <p><strong>Remember to bring:</strong> ${itinerary.checklist}</p>
+          <p><strong>Notes:</strong> ${itinerary.notes}</p>
         </article>
       </section>
     `).join('')
