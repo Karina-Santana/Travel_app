@@ -15,24 +15,33 @@ function renderLogin() {
       </form>
     </section>
   `
-}
+} 
 
 function login(event) {
   event.preventDefault()
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
-    fetch('/api/sessions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-      
+  fetch('/api/sessions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+    
+  })
+    .then(res => res.json())
+    .then(userName => state.loggedInUserName = userName)
+    .then(() => {
+      if (state.loggedInUserName == null) {
+        renderLogin()
+        document.querySelector('#error-message').innerHTML =`
+        <section class='error' data-id=''>
+          <p>Wrong password or Email.</p>
+        </section>
+        `
+      } else {
+      header() 
+      renderTripList()
+      document.querySelector('#error-message').innerHTML = null
+        }
     })
-      .then(res => res.json())
-      .then(userName => state.loggedInUserName = userName)
-      .then(() => {
-        header()
-        renderTripList()
-      })
-} 
- 
+}
 
