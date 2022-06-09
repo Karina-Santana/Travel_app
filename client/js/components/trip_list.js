@@ -71,16 +71,18 @@ function editTrip(event, tripId) {
     body: JSON.stringify(data)
   })
 
-
-  renderTripList(state.tripId)
-
+  .then(() => {
+   const editedTrip = state.trips.filter(t => t.id == tripId).slice(0)
+    state.trips.push(editedTrip)
+    console.log(editedTrip)
+    renderTripList()  
+  }) 
 }
 
 function deleteTrip(event) {
   const deleteBtn = event.target
   const tripDOM = deleteBtn.closest('.trip')
   const tripId = tripDOM.dataset.id
-
   fetch(`/api/trips/${tripId}`, {
     method: 'DELETE'
   })
