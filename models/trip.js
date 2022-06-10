@@ -23,6 +23,7 @@ const Trip = {
     UPDATE trips 
     SET name = $1, start_date = $2, end_date = $3, image_url = $4
     WHERE id = $5
+    RETURNING *
     `
 
     return db.query(sql, [name, start_date, end_date,image_url, tripId])

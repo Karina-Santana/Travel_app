@@ -17,6 +17,14 @@ router.post('/:userId', (req, res) => {
   .then(trip => res.json(trip))
 })
 
+router.put('/:id', (req, res) => {
+  const { name, start_date, end_date, image_url } = req.body
+  const tripId = req.params.id
+  Trip
+    .edit(name, start_date, end_date, image_url, tripId)
+    .then(trip => res.json(trip))
+})
+
 router.delete('/:id', (req, res) => {
   const tripId = req.params.id
 

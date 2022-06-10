@@ -102,12 +102,13 @@ function editTrip(event, tripId) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
+    .then(res => res.json())
     .then(editedTrip => {
+      console.log(editedTrip)
       state.trips
         .forEach(trip => {
-          console.log(editedTrip)
           if (trip.id == editedTrip.id) {
-
+            
           }
         })
       renderTripList()
