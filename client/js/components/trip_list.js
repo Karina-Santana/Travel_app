@@ -1,10 +1,10 @@
 function renderTripList(userId) {
   userId = state.loggedInUserName.userId
   renderTrips()
-  .then((trips) => {
+    .then((trips) => {
       if (state.loggedInUserName) {
-      console.log(state)
-      document.querySelector('#page').innerHTML = `
+        console.log(state)
+        document.querySelector('#page').innerHTML = `
       <section class="trip-list">
         ${trips}
       </section>
@@ -12,21 +12,23 @@ function renderTripList(userId) {
       } else {
         document.querySelector('#page').innerHTML = ''
       }
-  })
+    })
 }
 
 function renderTrips() {
   return fetch(`api/trips/${state.userId}`)
-  .then(res => res.json())
-  .then(trips => {
-    state.trips = trips
-  })
-  .then(() => {
-    return state.trips.map(trip => `
+    .then(res => res.json())
+    .then(trips => {
+      state.trips = trips
+    })
+    .then(() => {
+      return state.trips.map(trip => `
     <section class='trip' style="background-image:url(${trip.image_url});" data-id='${trip.id}'>
       <header>
-        <h2 class="trip-name"onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
-        <p class="dates"> ${trip.start_date} - ${trip.end_date}</p>
+        <div class="trip-header">
+          <h2 class="trip-name" onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
+          <p class="dates">${trip.start_date}  -  ${trip.end_date}</p>
+        </div>
         <div class="edit-delete">
           <p class="edit-btn" onClick="renderEditTrip(${trip.id})">Edit</p>
           <p class="delete-btn" onClick="deleteTrip(event)">Delete</p>
@@ -88,7 +90,7 @@ function renderEditTrip(tripId) {
       </form>
     </section>
     `}
-    ).join('')
+  ).join('')
 }
 
 function editTrip(event, tripId) {
@@ -100,16 +102,16 @@ function editTrip(event, tripId) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
-   .then(editedTrip => {
+    .then(editedTrip => {
       state.trips
-      .forEach(trip => {
-        console.log(editedTrip)
-        if (trip.id == editedTrip.id) {
-            
-        }
-      })
-    renderTripList()  
-  }) 
+        .forEach(trip => {
+          console.log(editedTrip)
+          if (trip.id == editedTrip.id) {
+
+          }
+        })
+      renderTripList()
+    })
 }
 
 function deleteTrip(event) {
@@ -122,11 +124,11 @@ function deleteTrip(event) {
     .then(() => {
       state.trips = state.trips.filter(t => t.id != tripId)
       renderTrips()
-      .then((trips) => {
-        document.querySelector('#page').innerHTML = `
+        .then((trips) => {
+          document.querySelector('#page').innerHTML = `
         <section class="trip-list">${trips}
         </section>
         `
-      })
+        })
     })
 }

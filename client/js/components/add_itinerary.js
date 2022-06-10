@@ -1,7 +1,7 @@
 function renderAddItinerary() {
   document.querySelector('#page').innerHTML = `
   <form onSubmit="createItinerary(event)">
-      <h2>Add to your Itinerary</h2>
+      <h2 class="add-itinerary-title">Add Itinerary to your Trip:</h2>
       <fieldset>
         <label for="">Start City: </label>
         <input type="name" name="start_location">
@@ -34,12 +34,12 @@ function renderAddItinerary() {
 
       <fieldset>
         <label for="">Activities: </label>
-        <input type="text" name="activities" placeholder="Write here places to visit and activities you want to do">
+        <input type="text" name="activities" placeholder="Write here places to visit, activities and more">
       </fieldset>
 
       <fieldset>
         <label for="">Notes: </label>
-        <input type="text" name="notes" placeholder="Write or paste anything here: how to get around, tips, etc">
+        <input type="text" name="notes" placeholder="Write or paste anything here">
       </fieldset>
 
       <fieldset>

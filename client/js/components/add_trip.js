@@ -2,7 +2,7 @@ function renderAddTrip() {
   document.querySelector('#page').innerHTML = `
   <section class='create-trip'>
     <form onSubmit="createTrip(event)">
-      <h2>Add trip</h2>
+      <h2 class="add-trip-title">Add trip</h2>
       <fieldset>
         <label for="">Name: </label>
         <input type="name" name="name">
@@ -22,7 +22,7 @@ function renderAddTrip() {
         <label for="">Image URL: </label>
         <input type="text" name="image_url">
       </fieldset>
-      <button>Add Trip</button>
+      <button class="add-trip-btn">Add Trip</button>
     </form>
   </section>
   `

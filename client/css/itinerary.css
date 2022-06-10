@@ -1,5 +1,60 @@
 .itinerary {
-    border: 1px solid black;
     margin-bottom: 20px;
+    padding: 10px;
+    background-color: gray;
+    background-image: url("https://hbr.org/resources/images/article_assets/2015/03/MAR15_26_checklist.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-content: center;
+    border-radius: 20px;
+}
+
+.itineraries {
+    color: black;
+}
+
+.add-itinerary-btn {
+    list-style-type: none;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
     padding: 5px;
+    margin-bottom: 20px;
+}
+
+.add-itinerary-btn:hover {
+    background-color: rgb(254, 202, 16);
+}
+
+.add-itinerary-btn:active {
+    background-color: rgb(126, 126, 126);
+    transform: translateY(3px);
+}
+
+.itinerary-list {
+    display: inline-block;
+}
+
+.itinerary-article {
+    padding-left: 58px;
+    padding-right: 58px;
+}
+
+strong {
+    color: black;
+    font-size: 20px;
+}
+
+.start-city,
+.end-city {
+    margin-bottom: 0;
+}
+
+.start-dates,
+.end-dates {
+    margin-top: 0;
+}
+
+.add-itinerary-title {
+    color: white;
 }
