@@ -20,20 +20,21 @@ function renderTrips() {
   .then(res => res.json())
   .then(trips => {
     state.trips = trips
-})
-.then(() => {
-  return state.trips.map(trip => `
-  <section class='trip' style="background-image:url(${trip.image_url});" data-id='${trip.id}'>
-    <header>
-      <h2 onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
-      <span onClick="deleteTrip(event)">delete</span>
-      <span onClick="renderEditTrip()">edit</span>
-    </header>
-    <p>${trip.start_date}</p>
-    <p>${trip.end_date}</p>
-    </section>
-  `).join('')
   })
+  .then(() => {
+    return state.trips.map(trip => `
+    <section class='trip' style="background-image:url(${trip.image_url});" data-id='${trip.id}'>
+      <header>
+        <h2 class="trip-name"onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
+        <p class="dates"> ${trip.start_date} - ${trip.end_date}</p>
+        <div class="edit-delete">
+          <p class="edit-btn" onClick="renderEditTrip(${trip.id})">Edit</p>
+          <p class="delete-btn" onClick="deleteTrip(event)">Delete</p>
+        </div>
+      </header>
+    </section>
+    `).join('')
+    })
 }
 
 // function renderTrips() {
@@ -58,11 +59,11 @@ function renderTrips() {
 // }
 
 
-function renderEditTrip() {
-  return state.trips.map(trip =>
+function renderEditTrip(tripId) {
+  return state.trips.filter(trip => trip.id == tripId).map(trip => {
     document.querySelector('#page').innerHTML = `
-    <section class='edit-trip' data-id='${trip.id}'>
-      <form onSubmit="editTrip(event)">
+    <section class='edit-trip' data-id='${tripId}'>
+      <form onSubmit="editTrip(event, ${tripId})">
         <h2>Edit Trip</h2>
         <fieldset>
           <label for="">Name: </label>
@@ -86,7 +87,8 @@ function renderEditTrip() {
         <button>Edit Trip</button>
       </form>
     </section>
-    `).join('')
+    `}
+    ).join('')
 }
 
 function editTrip(event, tripId) {
@@ -98,13 +100,16 @@ function editTrip(event, tripId) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
-
-    .then(() => {
-      const editedTrip = state.trips.filter(t => t.id == tripId).slice(0)
-      state.trips.push(editedTrip)
-      console.log(editedTrip)
-      renderTripList()
-    })
+   .then(editedTrip => {
+      state.trips
+      .forEach(trip => {
+        console.log(editedTrip)
+        if (trip.id == editedTrip.id) {
+            
+        }
+      })
+    renderTripList()  
+  }) 
 }
 
 function deleteTrip(event) {

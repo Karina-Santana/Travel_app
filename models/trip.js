@@ -18,13 +18,14 @@ const Trip = {
     .then(dbRes => dbRes.rows[0])
   }, 
 
-  edit: (name, start_date, end_date, tripId) => {
+  edit: (name, start_date, end_date, image_url, tripId) => {
     const sql = `
-    UPDATE trips SET name = $1, start_date = $2, end_date = $3
-    WHERE id = $4
+    UPDATE trips 
+    SET name = $1, start_date = $2, end_date = $3, image_url = $4
+    WHERE id = $5
     `
 
-    return db.query(sql, [name, start_date, end_date, tripId])
+    return db.query(sql, [name, start_date, end_date,image_url, tripId])
       .then(dbRes => dbRes.rows[0])
   },
 
