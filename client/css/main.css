@@ -12,6 +12,7 @@ body {
     background-image: url("/images/61765.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 100vh;
 }
 
 header {
@@ -139,10 +140,15 @@ button:active {
 
 .password-label,
 .email-label,
-.login-title {
+.login-title,
+.signup-title {
     color: white;
 }
 
 .email-password {
     display: inline-block;
+}
+
+#error-message {
+    color: white;
 }

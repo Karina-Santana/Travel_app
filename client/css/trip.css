@@ -22,7 +22,8 @@
 .delete-btn,
 .logout-btn,
 .show-list,
-.create-trip-btn {
+.create-trip-btn,
+.create-trip {
     background-color: rgb(239, 239, 239);
     padding: 5px;
     border-radius: 10px;
@@ -74,6 +75,15 @@
     transform: translateY(3px);
 }
 
+li.create-trip:hover {
+    background-color: rgb(254, 202, 16);
+}
+
+li.create-trip:active {
+    background-color: rgb(126, 126, 126);
+    transform: translateY(3px);
+}
+
 .edit-delete {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -92,7 +102,8 @@
 
 .show-list,
 .create-trip-btn,
-.logout-btn {
+.logout-btn,
+.create-trip {
     list-style-type: none;
     margin-bottom: 30px;
     justify-content: center;
@@ -150,4 +161,12 @@ input {
 
 form {
     display: inline-block;
+}
+
+section.create-trip {
+    background-color: rgb(254, 202, 16);
+}
+
+.edit-title {
+    color: white;
 }
