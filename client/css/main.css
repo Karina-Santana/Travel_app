@@ -1,17 +1,31 @@
 * {
     box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
 }
 
 body {
-    margin: 0 2em;
+    margin: 0 auto;
     background-repeat: no-repeat;
     background-size: 100%;
     text-align: center;
+    /* background-color: rgb(48, 92, 139); */
+    background-image: url("/images/61765.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    display: inline-block;
+    align-items: center;
+    /* overflow: hidden;
+    position: fixed;
+    top: 0; */
 }
 
 .logo {
     width: 150px;
-    border-radius: 40%;
+    border-radius: 60%;
+    margin-top: 20px;
 }
 
 form {
@@ -32,21 +46,14 @@ form input {
 
 .signup-login {
     list-style-type: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
     margin: auto;
     margin-bottom: 20px;
     gap: 10px;
-}
-
-.signup-btn {
-    margin-left: 250px;
-}
-
-.login-btn {
-    margin-right: 250px;
+    padding-right: 40px;
 }
 
 .signup-btn,
@@ -59,7 +66,7 @@ form input {
 }
 
 .signup-btn:hover {
-    background-color: rgb(214, 214, 214);
+    background-color: rgb(254, 202, 16);
 }
 
 .signup-btn:active {
@@ -68,10 +75,74 @@ form input {
 }
 
 .login-btn:hover {
-    background-color: rgb(214, 214, 214);
+    background-color: rgb(254, 202, 16);
 }
 
 .login-btn:active {
     background-color: rgb(126, 126, 126);
     transform: translateY(3px);
+}
+
+.login-btn2:hover {
+    background-color: rgb(254, 202, 16);
+}
+
+.login-btn2:active {
+    background-color: rgb(126, 126, 126);
+    transform: translateY(3px);
+}
+
+.home-gif {
+    margin-bottom: 30px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: rgb(254, 202, 16);
+}
+
+button:active {
+    background-color: rgb(126, 126, 126);
+    transform: translateY(3px);
+}
+
+.login-btn2 {
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border: none;
+    display: list-item;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.call-to-action2,
+.logo-title {
+    color: white;
+}
+
+.call-to-action1 {
+    color: rgb(254, 202, 16);
+}
+
+.home-gif {
+    border-radius: 20px;
+}
+
+.password-label,
+.email-label,
+.login-title {
+    color: white;
+}
+
+.email-password {
+    display: inline-block;
 }
