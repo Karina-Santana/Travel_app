@@ -66,7 +66,7 @@ function renderEditTrip(tripId) {
     document.querySelector('#page').innerHTML = `
     <section class='edit-trip' data-id='${tripId}'>
       <form onSubmit="editTrip(event, ${tripId})">
-        <h2>Edit Trip</h2>
+        <h2 class="edit-title">Edit Trip</h2>
         <fieldset>
           <label for="">Name: </label>
           <input type="name" name="name" placeholder="${trip.name}">
