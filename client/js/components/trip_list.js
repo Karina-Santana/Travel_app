@@ -3,7 +3,6 @@ function renderTripList(userId) {
   renderTrips()
     .then((trips) => {
       if (state.loggedInUserName) {
-        console.log(state)
         document.querySelector('#page').innerHTML = `
       <section class="trip-list">
         ${trips}
@@ -104,11 +103,9 @@ function editTrip(event, tripId) {
   })
     .then(res => res.json())
     .then(editedTrip => {
-      console.log(editedTrip)
       state.trips
         .forEach(trip => {
           if (trip.id == editedTrip.id) {
-            
           }
         })
       renderTripList()
